@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Johnny Nguyen</title>
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Google Fonts: Nunito and Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Roboto:wght@400;700&display=swap" 
+    rel="stylesheet"
+  >
+
+  <!-- Smooth Scrolling for anchor links -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <img src="images/loading.gif" alt="loading" class="loading-gif"/>
+    <div class="preloader-overlay">
+  
+      <p class="preloader-text">Initializing system . . . Please wait . . .</p>
+    </div>
+  </div>
+
+  <!-- MAIN WRAPPER (Hidden until preloader finishes) -->
+  <div id="main-wrapper" class="hidden">
+    <!-- Header & Navigation -->
+    <header class="site-header" id="top-header">
+      <!-- CHANGE: link the name to your LinkedIn -->
+      <div class="logo glitch">
+        <a href="https://www.linkedin.com/in/jnguyen727/" target="_blank" data-text="JOHNNY NGUYEN">
+          JOHNNY NGUYEN
+        </a>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#biography">Biography</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero fade-in">
+      <div class="hero-content">
+        <h1 class="hero-title glitch" data-text="JOHNNY NGUYEN">
+          JOHNNY NGUYEN
+        </h1>
+        <p>
+          Welcome to my website, I'd like to share some of what I'm working on and a little about me! <br>
+          I'm a CS student at <em>Purdue University</em> with too many hobbies.
+        </p>
+        <!-- Button Row -->
+        <div class="hero-buttons">
+          <button class="btn" id="random-quote-btn">Random Quote</button>
+          <!-- The "View Resume" button with animated hover -->
+          <button class="btn resume-trigger" id="resume-btn">View Resume</button>
+        </div>
+        <div id="quote-box" class="quote-box"></div>
+      </div>
+      <!-- Funny GIF on the side -->
+      <div class="funny-gif-container">
+        <img src="images/funny.gif" alt="Funny GIF"/>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section fade-in">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="image-wrapper">
+          <img
+            src="images/me.jpeg"
+            alt="Profile Photo"
+          />
+          <div class="image-caption">Me in Chicago</div>
+        </div>
+        <div class="about-text">
+          <p>
+            Hello! My name is Johnny Nguyen and I have interests in CS, Math, AI, fitness, badminton, and many more activities I wish I had time for. I’m a first-generation Computer Science student at Purdue University.
+            <br><br>
+            I’m exploring machine learning research, building AI-driven apps in Python, and occasionally dabbling in game dev stuff.
+            <br><br>
+            I went to high school in Fort Wayne, Indiana, where I also received my Associate's Degree from Vincennes University via an early college program. During my time with Vincennes' early college program, I served as a tutor and helped coordinate some of their events. 
+            <br><br>
+            Beyond academics, you’ll usually find me hitting the badminton courts, lifting at the gym, or playing video games. 
+            <br><br>
+            My current favorites: neat side projects, ai, twitch.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Extended Biography Section -->
+    <section id="biography" class="biography-section fade-in">
+      <h2>Biography & Hobbies</h2>
+      <div class="bio-block fade-in-later">
+        <h3>Early Interests</h3>
+        <p>
+          My interest for Computer Science and AI mostly comes from popular media and my natural interest in computers growing up.
+          I remember researching computers a lot growing up, such as what each individual part did, and how to build computers. 
+        </p>
+        <br>
+        <p>
+          My very first experience programming was using Scratch during my high school CS course. I ended up building a game in Scratch as my first project. Then, I ended up branching out and took Harvard's CS50 during my final year of high school
+          to prepare for my introductory CS courses at Purdue.
+        </p>
+      </div>
+      <div class="bio-block fade-in-later">
+        <h3>Learning & Research</h3>
+        <p>
+          At Purdue, I'm currently going through my fundamental CS courses (Currently CS240 and CS182). 
+          I enjoy putting the concepts that I learn from class into the class projects and my projects. Whenever I have 
+          free time, I enjoy learning more about machine learning, algorithms, and also learn from Computer Science books.
+          <br><br>
+          Next year, I have the opportunity to be in the Data Mine Corporate Partners. The program gives an opportunity to build a project with a team and corporate partner, such as Minecraft, Google, Microsoft, and more!
+          <br><br>
+          This fall, I was also able to intern at Degreecat as a Software and Data Engineer. Degreecat is a startup that makes planning for college easier, and provides high school students with an easy platform to decide which
+          college is best for them. I was responsible for things such as creating Python scripts to extract data from 150+ colleges and processing data. You can see more in my resume.
+          <br><br>
+          Currently, I'm most confident with Java, but I'm currently studying C.
+        </p>
+      </div>
+      <div class="bio-block fade-in-later">
+        <h3>Personal Life & Hobbies</h3>
+        <p>
+          I love staying active with badminton, 
+          bodybuilding, playing video games, and the occasional marathon binge watch when I have time. 
+          I also like listening to music a lot, and I play bass guitar.
+        </p>
+        <br>
+        <p>
+          I started lifting weights and getting into fitness when I was 15 years old, but I started taking bodybuilding seriously when I was 17. I started off by doing calisthenics in my room since I wanted to be healthier and more fit.
+          <br><br>
+          My favorite passtime currently is watching shows when I'm not studying. Some of my favorite shows are Steins;Gate, JoJo's Bizarre Adventure, Evangelion, Monster, and Berserk.
+        </p>
+      </div>
+
+      <!-- Optional Slideshow of Hobbies/Activities -->
+      <div class="slideshow-container">
+        <div class="slide">
+          <img src="images/pizza.jpeg" alt="Hobby 1" />
+          <div class="slide-caption">Pizza in Chicago</div>
+        </div>
+        <div class="slide">
+          <img src="images/vacation.jpeg" alt="Hobby 2" />
+          <div class="slide-caption">Me on vacation in Vietnam</div>
+        </div>
+        <div class="slide">
+          <img src="images/vacationhat.jpeg" alt="Hobby 3" />
+          <div class="slide-caption">Me in Vietnam again</div>
+        </div>
+        <!-- Arrows -->
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+      </div>
+      <!-- Dots -->
+      <div class="dots-container">
+        <span class="dot" onclick="setCurrentSlide(1)"></span>
+        <span class="dot" onclick="setCurrentSlide(2)"></span>
+        <span class="dot" onclick="setCurrentSlide(3)"></span>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section fade-in">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <!-- Single project card -->
+        <div class="project-card" data-gallery="gadget1">
+          <img src="images/gui.png" alt="Gadget 1"/>
+          <div class="image-caption">Social Media App - CS180 Final</div>
+          <h3>Social Media App</h3>
+          <p>A social media app built with Java for CS180's final team project.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section fade-in">
+      <h2>Contact</h2>
+      <p>Connect with me!</p>
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:nguye875@purdue.edu">nguye875@purdue.edu</a><br/>
+        <strong>GitHub:</strong>
+        <a href="#">@jnguyen727</a><br/>
+        <strong>LinkedIn:</strong>
+        <a href="#">www.linkedin.com/in/jnguyen727</a>
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2025 <span class="accent">Johnny Nguyen.</span></p>
+    </footer>
+  </div> <!-- end #main-wrapper -->
+
+  <!-- Lightbox Modal with Slide Animations -->
+  <div id="lightbox" class="lightbox">
+    <span class="lb-close">&times;</span>
+    <span class="lb-arrow lb-prev">&#10094;</span>
+    <img class="lb-image" src="#" alt="Lightbox Image" data-direction="none"/>
+    <img class="lb-image-next" alt="Next Image" />
+    <img class="lb-image-prev" alt="Previous Image" />
+    <span class="lb-arrow lb-next">&#10095;</span>
+  </div>
+
+  <!-- RESUME MODAL (Pop-up) -->
+  <div id="resume-modal" class="resume-modal">
+    <div class="resume-modal-content">
+      <span class="resume-close">&times;</span>
+      <h2 class="resume-heading">Johnny Nguyen — Interactive Resume</h2>
+      
+      <!-- Navigation Tabs (Profile, Summary, Experience, etc.) -->
+      <div class="resume-tabs">
+        <button class="resume-tablink active" data-target="profile-tab">Profile</button>
+        <button class="resume-tablink" data-target="summary-tab">Summary</button>
+        <button class="resume-tablink" data-target="experience-tab">Experience</button>
+        <button class="resume-tablink" data-target="education-tab">Education</button>
+        <button class="resume-tablink" data-target="skills-tab">Skills</button>
+      </div>
+
+      <!-- TAB CONTENT: Profile -->
+      <div class="resume-tabcontent" id="profile-tab">
+        <h3>Profiles</h3>
+        <p><strong><a href="https://www.linkedin.com/in/jnguyen727/" target="_blank" data-text="Johnny Nguyen">
+          Johnny Nguyen
+        </a></strong></p>
+      </div>
+
+      <!-- TAB CONTENT: Summary -->
+      <div class="resume-tabcontent" id="summary-tab">
+        <h3>Summary</h3>
+        <p>
+          I'm a Computer Science student at Purdue with a passion for AI/ML, ethics, and innovation. 
+          I'm very eager to apply problem-solving, coding skills, and everything I've learned in my classes at internships.
+        </p>
+      </div>
+
+      <!-- TAB CONTENT: Experience -->
+      <div class="resume-tabcontent" id="experience-tab">
+        <h3>Experience</h3>
+        <h4>Degreecat — Software & Data Engineer Intern (Sep 2024 - Present)</h4>
+        <ul>
+          <li>Developed and maintained Python scripts for 150+ colleges, boosting data accuracy by 40%.</li>
+          <li>Built comprehensive datasets to predict school costs, recommend best-value colleges, etc.</li>
+          <li>Optimized backend architecture by 60%, achieving 99.95% reliability alongside five engineers.</li>
+        </ul>
+
+        <h4>Vincennes University — Head of Mathematics Dept (Mar 2024 - May 2024)</h4>
+        <ul>
+          <li>Led math tutoring for 50+ peers, coordinating 10+ events, improving average grades by 30%.</li>
+          <li>Guided students on Python (AI) certifications, fostering a collaborative learning atmosphere.</li>
+        </ul>
+
+        <h4>Mike's Carwash — Wash Attendant (Oct 2022 - Aug 2023)</h4>
+        <ul>
+          <li>Collaborated with a team to wash/detail over 100 vehicles daily.</li>
+          <li>Maintained customer satisfaction by ensuring high-quality standards and courteous service.</li>
+        </ul>
+      </div>
+
+      <!-- TAB CONTENT: Education -->
+      <div class="resume-tabcontent" id="education-tab">
+        <h3>Education</h3>
+        <p>
+          <strong>Purdue University</strong> (May 2027)<br>
+          Bachelor of Science in Computer Science — 3.5 GPA
+        </p>
+      </div>
+
+      <!-- TAB CONTENT: Skills -->
+      <div class="resume-tabcontent" id="skills-tab">
+        <h3>Skills</h3>
+        <p>
+          Python | Java | JavaScript | SQL | Git | HTML/CSS | Machine Learning | Data Structures | Algorithms |
+          OOP | OpenAI API | Linux | Emotional Intelligence | Tutoring | Leadership
+        </p>
+        <h4>Languages</h4>
+        <p>Cantonese | Vietnamese | English</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // PRELOADER
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const preloader = document.getElementById("preloader");
+        const mainWrapper = document.getElementById("main-wrapper");
+        preloader.style.opacity = "0";
+        preloader.style.visibility = "hidden";
+        mainWrapper.classList.remove("hidden");
+      }, 3000);
+    });
+
+    // RANDOM QUOTES
+    const quotes = [
+      "El Psy Kongroo...",
+      "I am mad scientist, Hououin Kyouma!",
+      "The universe has a beginning, but no end. — Infinite.",
+      "Open the Steins Gate!",
+      "Time travel... it's more trouble than you'd think.",
+      "No one knows which is correct. Perhaps they're all correct.",
+      "When you have eliminated all which is impossible, then whatever remains, however improbable, must be the truth.",
+      "'Jam a man of Fortune and J must seek my Fortune, Henry Avery 1994' - xQc",
+      "You need to have a little bit of rain to have a little bit of rainbow - Felix 'xQc' Lengyel"
+    ];
+    const quoteBox = document.getElementById("quote-box");
+    const randomQuoteBtn = document.getElementById("random-quote-btn");
+
+    randomQuoteBtn.addEventListener("click", function() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      quoteBox.textContent = quotes[randomIndex];
+    });
+
+    // LIGHTBOX GALLERY LOGIC WITH SLIDE ANIMATIONS
+    const galleries = {
+      gadget1: [
+        "images/picture.png",
+        "images/postinteract.png",
+        "images/added.png"
+      ]
+    };
+    const projectCards = document.querySelectorAll(".project-card");
+    const lightbox = document.getElementById("lightbox");
+    const lbClose = document.querySelector(".lb-close");
+    const lbImage = document.querySelector(".lb-image");
+    const lbImageNext = document.querySelector(".lb-image-next");
+    const lbImagePrev = document.querySelector(".lb-image-prev");
+    const lbPrev = document.querySelector(".lb-prev");
+    const lbNext = document.querySelector(".lb-next");
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    projectCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const galleryName = card.getAttribute("data-gallery");
+        currentGallery = galleries[galleryName] || [];
+        currentIndex = 0;
+
+        lbImage.src = currentGallery[currentIndex];
+        lbImage.setAttribute("data-direction", "none");
+        preLoadNeighbors();
+        lightbox.classList.add("show");
+      });
+    });
+
+    function preLoadNeighbors() {
+      const nextIndex = (currentIndex + 1) % currentGallery.length;
+      lbImageNext.src = currentGallery[nextIndex];
+      const prevIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      lbImagePrev.src = currentGallery[prevIndex];
+    }
+
+    lbNext.addEventListener("click", () => {
+      lbImage.setAttribute("data-direction", "left");
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % currentGallery.length;
+        lbImage.src = currentGallery[currentIndex];
+        lbImage.setAttribute("data-direction", "none");
+        preLoadNeighbors();
+      }, 200);
+    });
+
+    lbPrev.addEventListener("click", () => {
+      lbImage.setAttribute("data-direction", "right");
+      setTimeout(() => {
+        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+        lbImage.src = currentGallery[currentIndex];
+        lbImage.setAttribute("data-direction", "none");
+        preLoadNeighbors();
+      }, 200);
+    });
+
+    lbClose.addEventListener("click", () => {
+      lightbox.classList.remove("show");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("show");
+      }
+    });
+
+    // Sticky Transparent Header on Scroll
+    document.addEventListener("scroll", function() {
+      const header = document.getElementById("top-header");
+      if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+    // Fade-in-later triggers for biography sub-blocks
+    document.addEventListener('scroll', () => {
+      const blocks = document.querySelectorAll('.bio-block');
+      blocks.forEach(block => {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          block.classList.add('fade-in-later');
+        }
+      });
+    });
+
+    // SLIDESHOW for Biography Hobbies
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function changeSlide(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function setCurrentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
+      if (n > slides.length) { slideIndex = 1; }
+      if (n < 1) { slideIndex = slides.length; }
+      slides.forEach(sl => sl.style.display = "none");
+      dots.forEach(dot => dot.className = dot.className.replace(" active", ""));
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+    setInterval(() => {
+      changeSlide(1);
+    }, 6000);
+
+    // RESUME MODAL Logic
+    const resumeModal = document.getElementById("resume-modal");
+    const resumeBtn = document.getElementById("resume-btn");
+    const resumeClose = document.querySelector(".resume-close");
+    const tabLinks = document.querySelectorAll(".resume-tablink");
+    const tabContents = document.querySelectorAll(".resume-tabcontent");
+
+    // Open modal on button click
+    resumeBtn.addEventListener("click", () => {
+      resumeModal.style.display = "flex";
+      document.body.style.overflow = "hidden"; // optional to disable scrolling behind modal
+    });
+
+    // Close modal
+    resumeClose.addEventListener("click", () => {
+      resumeModal.style.display = "none";
+      document.body.style.overflow = "auto";
+    });
+
+    // Close modal if clicking outside content
+    window.addEventListener("click", (e) => {
+      if (e.target === resumeModal) {
+        resumeModal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Tab switching
+    tabLinks.forEach(tab => {
+      tab.addEventListener("click", (e) => {
+        tabLinks.forEach(link => link.classList.remove("active"));
+        tabContents.forEach(content => content.style.display = "none");
+        e.target.classList.add("active");
+        const targetId = e.target.getAttribute("data-target");
+        document.getElementById(targetId).style.display = "block";
+      });
+    });
+
+    // Default active tab
+    document.getElementById("profile-tab").style.display = "block";
+  </script>
+</body>
+</html>
