@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Johnny Nguyen</title>
 
-  <!-- Link to CSS -->
+  <!-- Link to your external CSS -->
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Google Fonts: Nunito and Roboto -->
@@ -28,7 +28,6 @@
   <div id="preloader">
     <img src="images/loading.gif" alt="loading" class="loading-gif"/>
     <div class="preloader-overlay">
-  
       <p class="preloader-text">Initializing system . . . Please wait . . .</p>
     </div>
   </div>
@@ -37,8 +36,8 @@
   <div id="main-wrapper" class="hidden">
     <!-- Header & Navigation -->
     <header class="site-header" id="top-header">
-      <!-- CHANGE: link the name to your LinkedIn -->
       <div class="logo glitch">
+        <!-- CHANGE: link the name to your LinkedIn if you want -->
         <a href="https://www.linkedin.com/in/jnguyen727/" target="_blank" data-text="JOHNNY NGUYEN">
           JOHNNY NGUYEN
         </a>
@@ -66,13 +65,17 @@
         <!-- Button Row -->
         <div class="hero-buttons">
           <button class="btn" id="random-quote-btn">Random Quote</button>
-          <!-- The "View Resume" button with animated hover -->
+          <!-- The "View Resume" button -->
           <button class="btn resume-trigger" id="resume-btn">View Resume</button>
         </div>
         <div id="quote-box" class="quote-box"></div>
       </div>
-      <!-- Funny GIF on the side -->
-   
+      <!-- Optional Funny GIF on the side -->
+      <!--
+      <div class="funny-gif-container">
+        <img src="images/funny.gif" alt="Funny GIF">
+      </div>
+      -->
     </section>
 
     <!-- About Me Section -->
@@ -121,27 +124,27 @@
         <h3>Learning & Research</h3>
         <p>
           At Purdue, I'm currently going through my fundamental CS courses (Currently CS240 and CS182). 
-          I enjoy putting the concepts that I learn from class into the class projects and my projects. Whenever I have 
-          free time, I enjoy learning more about machine learning, algorithms, and also learn from Computer Science books.
+          I enjoy putting the concepts that I learn from class into the class projects and my own projects. Whenever I have 
+          free time, I enjoy learning more about machine learning, algorithms, and also read Computer Science books.
           <br><br>
-          Next year, I have the opportunity to be in the Data Mine Corporate Partners. The program gives an opportunity to build a project with a team and corporate partner, such as Minecraft, Google, Microsoft, and more!
+          Next year, I have the opportunity to be in the Data Mine Corporate Partners. The program provides an opportunity to build a project with a team and corporate partner, such as Minecraft, Google, Microsoft, and more!
           <br><br>
-          This fall, I was also able to intern at Degreecat as a Software and Data Engineer. Degreecat is a startup that makes planning for college easier, and provides high school students with an easy platform to decide which
-          college is best for them. I was responsible for things such as creating Python scripts to extract data from 150+ colleges and processing data. You can see more in my resume.
+          This fall, I was also able to intern at Degreecat as a Software and Data Engineer. Degreecat is a startup that makes planning for college easier, and provides high school students with a platform to decide which
+          college is best for them. I was responsible for things such as creating Python scripts to extract data from 150+ colleges and processing that data. You can see more in my resume.
           <br><br>
-          Currently, I'm most confident with Java, but I'm currently studying C.
+          Currently, I'm most confident with Java, but I'm studying C, too.
         </p>
       </div>
       <div class="bio-block fade-in-later">
         <h3>Personal Life & Hobbies</h3>
         <p>
           I love staying active with badminton, 
-          bodybuilding, playing video games, and the occasional marathon binge watch when I have time. 
+          bodybuilding, playing video games, and the occasional marathon binge-watch when I have time. 
           I also like listening to music a lot, and I play bass guitar.
         </p>
         <br>
         <p>
-          I started lifting weights and getting into fitness when I was 15 years old, but I started taking bodybuilding seriously when I was 17. I started off by doing calisthenics in my room since I wanted to be healthier and more fit.
+          I started lifting weights and getting into fitness when I was 15 years old, but I started taking bodybuilding seriously at 17. I started with calisthenics in my room since I wanted to be healthier and more fit.
           <br><br>
           My favorite passtime currently is watching shows when I'm not studying. Some of my favorite shows are Steins;Gate, JoJo's Bizarre Adventure, Evangelion, Monster, and Berserk.
         </p>
@@ -177,7 +180,7 @@
     <section id="projects" class="projects-section fade-in">
       <h2>Projects</h2>
       <div class="projects-grid">
-        <!-- Single project card -->
+        <!-- Example Project Card -->
         <div class="project-card" data-gallery="gadget1">
           <img src="images/gui.png" alt="Gadget 1"/>
           <div class="image-caption">Social Media App - CS180 Final</div>
@@ -195,9 +198,9 @@
         <strong>Email:</strong>
         <a href="mailto:nguye875@purdue.edu">nguye875@purdue.edu</a><br/>
         <strong>GitHub:</strong>
-        <a href="#">@jnguyen727</a><br/>
+        <a href="https://github.com/jnguyen727">@jnguyen727</a><br/>
         <strong>LinkedIn:</strong>
-        <a href="#">www.linkedin.com/in/jnguyen727</a>
+        <a href="https://www.linkedin.com/in/jnguyen727">www.linkedin.com/in/jnguyen727</a>
       </p>
     </section>
 
@@ -205,7 +208,8 @@
     <footer class="site-footer">
       <p>&copy; 2025 <span class="accent">Johnny Nguyen.</span></p>
     </footer>
-  </div> <!-- end #main-wrapper -->
+  </div> 
+  <!-- end #main-wrapper -->
 
   <!-- Lightbox Modal with Slide Animations -->
   <div id="lightbox" class="lightbox">
@@ -223,52 +227,60 @@
       <span class="resume-close">&times;</span>
       <h2 class="resume-heading">Johnny Nguyen — Interactive Resume</h2>
       
-      <!-- Navigation Tabs (Profile, Summary, Experience, etc.) -->
+      <!-- Navigation Tabs (Profile, Summary, Experience, Education, Projects, Skills) -->
       <div class="resume-tabs">
         <button class="resume-tablink active" data-target="profile-tab">Profile</button>
         <button class="resume-tablink" data-target="summary-tab">Summary</button>
         <button class="resume-tablink" data-target="experience-tab">Experience</button>
         <button class="resume-tablink" data-target="education-tab">Education</button>
+        <button class="resume-tablink" data-target="projects-tab">Projects</button>
         <button class="resume-tablink" data-target="skills-tab">Skills</button>
       </div>
 
       <!-- TAB CONTENT: Profile -->
       <div class="resume-tabcontent" id="profile-tab">
         <h3>Profiles</h3>
-        <p><strong><a href="https://www.linkedin.com/in/jnguyen727/" target="_blank" data-text="Johnny Nguyen">
-          Johnny Nguyen
-        </a></strong></p>
+        <p>
+          <strong>
+            <a href="https://www.linkedin.com/in/jnguyen727/" target="_blank" data-text="Johnny Nguyen">LinkedIn</a>
+          </strong><br>
+          <strong>Phone:</strong> (260) 466-1147<br>
+          <strong>Email:</strong> <a href="mailto:nguye875@purdue.edu">nguye875@purdue.edu</a>
+        </p>
       </div>
 
       <!-- TAB CONTENT: Summary -->
       <div class="resume-tabcontent" id="summary-tab">
         <h3>Summary</h3>
         <p>
-          I'm a Computer Science student at Purdue with a passion for AI/ML, ethics, and innovation. 
-          I'm very eager to apply problem-solving, coding skills, and everything I've learned in my classes at internships.
+          Computer Science major at Purdue. Passionate about building scalable solutions and keen to grow in a fast-paced, innovation-driven environment.
         </p>
       </div>
 
       <!-- TAB CONTENT: Experience -->
       <div class="resume-tabcontent" id="experience-tab">
         <h3>Experience</h3>
-        <h4>Degreecat — Software & Data Engineer Intern (Sep 2024 - Present)</h4>
+
+        <h4>Degreecat — Software &amp; Data Engineer Intern<br><em>Sep 2024 – Present • West Lafayette, IN</em></h4>
         <ul>
-          <li>Developed and maintained Python scripts for 150+ colleges, boosting data accuracy by 40%.</li>
-          <li>Built comprehensive datasets to predict school costs, recommend best-value colleges, etc.</li>
-          <li>Optimized backend architecture by 60%, achieving 99.95% reliability alongside five engineers.</li>
+          <li>Developed Dockerized Python scripts to gather data from 150+ colleges, improving data accuracy by 40%.</li>
+          <li>Optimized microservice architecture and CI/CD workflows (GitHub Actions), increasing pipeline performance by 60% with 99.95% uptime.</li>
+          <li>Collaborated with data scientists to transform raw data into predictive models for college cost-effectiveness, refining models via iterative feedback loops.</li>
+          <li>Participated in daily stand-ups, code reviews, and knowledge-sharing sessions, improving team synergy and project visibility.</li>
         </ul>
 
-        <h4>Vincennes University — Head of Mathematics Dept (Mar 2024 - May 2024)</h4>
+        <h4>Vincennes University — Head Math Tutor<br><em>Mar 2024 – May 2024 • Fort Wayne, IN</em></h4>
         <ul>
-          <li>Led math tutoring for 50+ peers, coordinating 10+ events, improving average grades by 30%.</li>
-          <li>Guided students on Python (AI) certifications, fostering a collaborative learning atmosphere.</li>
+          <li>Supervised 5 tutors and mentored 50+ students, elevating average math scores by 30% through individualized coaching and structured study sessions.</li>
+          <li>Organized 10+ university and career events, fostering community engagement and providing students with resources to explore STEM fields.</li>
+          <li>Increased Python (AI) certification completion rate by 20% by hosting hands-on workshops and offering one-on-one guidance.</li>
         </ul>
 
-        <h4>Mike's Carwash — Wash Attendant (Oct 2022 - Aug 2023)</h4>
+        <h4>Mike's Carwash — Wash Attendant<br><em>Oct 2022 – Aug 2023 • Fort Wayne, IN</em></h4>
         <ul>
-          <li>Collaborated with a team to wash/detail over 100 vehicles daily.</li>
-          <li>Maintained customer satisfaction by ensuring high-quality standards and courteous service.</li>
+          <li>Led a 5-person team to service 100+ vehicles/day, consistently exceeding throughput targets by 15% with an emphasis on efficiency and safety.</li>
+          <li>Maintained a 95% customer satisfaction rating, resolving inquiries professionally and training new staff on workflow best practices.</li>
+          <li>Recognized for strong communication and leadership, bridging staff and management for process improvement initiatives.</li>
         </ul>
       </div>
 
@@ -276,20 +288,30 @@
       <div class="resume-tabcontent" id="education-tab">
         <h3>Education</h3>
         <p>
-          <strong>Purdue University</strong> (May 2027)<br>
-          Bachelor of Science in Computer Science — 3.5 GPA
+          <strong>Purdue University</strong><br>
+          Bachelor of Science in Computer Science, GPA: 3.5<br>
+          West Lafayette, IN
         </p>
+      </div>
+
+      <!-- TAB CONTENT: Projects -->
+      <div class="resume-tabcontent" id="projects-tab">
+        <h3>Projects</h3>
+        <h4>EngageNet Java — Lead Developer<br><em>Sep 2024 – Dec 2024</em></h4>
+        <ul>
+          <li>Architected and implemented both server- and client-side applications for a social media platform featuring post, comment, like, and user-authentication functionality.</li>
+          <li>Planned and led a team of three from design to deployment, integrating REST APIs for data exchange and implementing user permission controls.</li>
+          <li>Enforced code reviews via GitHub, ensuring consistent coding standards and 80%+ test coverage with JUnit, while adhering to Agile milestones.</li>
+          <li>Improved system scalability by refactoring the data handling layer, reducing average response time by 25%.</li>
+        </ul>
       </div>
 
       <!-- TAB CONTENT: Skills -->
       <div class="resume-tabcontent" id="skills-tab">
         <h3>Skills</h3>
-        <p>
-          Python | Java | JavaScript | SQL | Git | HTML/CSS | Machine Learning | Data Structures | Algorithms |
-          OOP | OpenAI API | Linux | Emotional Intelligence | Tutoring | Leadership
-        </p>
-        <h4>Languages</h4>
-        <p>Cantonese | Vietnamese | English</p>
+        <p><strong>Languages/Tools:</strong> Python, Java, C, JavaScript, SQL, Docker, Git/GitHub, Linux, Bash</p>
+        <p><strong>Frameworks &amp; Concepts:</strong> Microservices, REST APIs, CI/CD, Data Structures, OOP, Machine Learning</p>
+        <p><strong>Soft Skills:</strong> Leadership, Tutoring, Collaboration, Communication, Time Management, Public Speaking, Emotional Intelligence</p>
       </div>
     </div>
   </div>
@@ -397,7 +419,7 @@
       }
     });
 
-    // Sticky Transparent Header on Scroll
+    // Sticky Header on Scroll
     document.addEventListener("scroll", function() {
       const header = document.getElementById("top-header");
       if (window.scrollY > 10) {
@@ -454,7 +476,7 @@
     // Open modal on button click
     resumeBtn.addEventListener("click", () => {
       resumeModal.style.display = "flex";
-      document.body.style.overflow = "hidden"; // optional to disable scrolling behind modal
+      document.body.style.overflow = "hidden"; // disable scrolling behind modal
     });
 
     // Close modal
