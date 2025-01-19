@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Helps avoid layout bugs on iPhones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Johnny Nguyen</title>
 
   <!-- Link to your external CSS -->
@@ -18,27 +19,130 @@
 
   <!-- Smooth Scrolling for anchor links -->
   <style>
+    /* Smooth Scroll */
     html {
       scroll-behavior: smooth;
     }
+
+    /************************************************
+      1) PRELOADER: spinning circle loader (GREEN)
+     ************************************************/
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #0d0d0d; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 8px solid #f3f3f3;
+      /* Accent color for the top border: GREEN */
+      border-top: 8px solid #00ff85; 
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    .preloader-text {
+      color: #ccc;
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /******************************************************
+      2) BODY: top-padding for sticky header
+     ******************************************************/
+    body {
+      margin: 0;
+      padding: 70px 0 0 0; /* Ensures content is not hidden under the header */
+      background: #0d0d0d;
+    }
+
+    /******************************************************
+      3) HEADER & LOGO COLOR: set to green 
+     ******************************************************/
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(26, 26, 26, 0.95);
+      height: 60px; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      padding: 0 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .site-header.scrolled {
+      background-color: rgba(26, 26, 26, 0.95);
+    }
+
+    /* The top-left name in green. */
+    .logo {
+      font-family: "Nunito", sans-serif;
+      font-size: 1.3rem;
+      color: #00ff85; /* green */
+      user-select: none;
+    }
+    .logo a {
+      text-decoration: none;
+      color: #00ff85;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    .nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav ul li a:hover {
+      color: #00ff85;
+    }
+
+    /************************************************************
+      4) "Fade-in-on-scroll" (Intersection Observer)
+     ************************************************************/
+    .fade-in-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
+
 <body>
   <!-- PRELOADER -->
   <div id="preloader">
-    <img src="images/loading.gif" alt="loading" class="loading-gif"/>
-    <div class="preloader-overlay">
-      <p class="preloader-text">Initializing system . . . Please wait . . .</p>
-    </div>
+    <div class="loader"></div>
+    <div class="preloader-text">Loading content...</div>
   </div>
 
   <!-- MAIN WRAPPER (Hidden until preloader finishes) -->
   <div id="main-wrapper" class="hidden">
     <!-- Header & Navigation -->
     <header class="site-header" id="top-header">
-      <div class="logo glitch">
-        <!-- CHANGE: link the name to your LinkedIn if you want -->
-        <a href="https://www.linkedin.com/in/jnguyen727/" target="_blank" data-text="JOHNNY NGUYEN">
+      <div class="logo">
+        <a href="https://www.linkedin.com/in/jnguyen727/" target="_blank">
           JOHNNY NGUYEN
         </a>
       </div>
@@ -53,9 +157,9 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero fade-in">
+    <section id="hero" class="hero fade-in-on-scroll">
       <div class="hero-content">
-        <h1 class="hero-title glitch" data-text="JOHNNY NGUYEN">
+        <h1 class="hero-title">
           JOHNNY NGUYEN
         </h1>
         <p>
@@ -65,28 +169,19 @@
         <!-- Button Row -->
         <div class="hero-buttons">
           <button class="btn" id="random-quote-btn">Random Quote</button>
-          <!-- The "View Resume" button -->
+          <!-- "View Resume" button -->
           <button class="btn resume-trigger" id="resume-btn">View Resume</button>
         </div>
         <div id="quote-box" class="quote-box"></div>
       </div>
-      <!-- Optional Funny GIF on the side -->
-      <!--
-      <div class="funny-gif-container">
-        <img src="images/funny.gif" alt="Funny GIF">
-      </div>
-      -->
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="about-section fade-in">
+    <section id="about" class="about-section fade-in-on-scroll">
       <h2>About Me</h2>
       <div class="about-content">
         <div class="image-wrapper">
-          <img
-            src="images/me.jpeg"
-            alt="Profile Photo"
-          />
+          <img src="images/me.jpeg" alt="Profile Photo"/>
           <div class="image-caption">Me in Chicago</div>
         </div>
         <div class="about-text">
@@ -95,73 +190,66 @@
             <br><br>
             I’m exploring machine learning research, building AI-driven apps in Python, and occasionally dabbling in game dev stuff.
             <br><br>
-            I went to high school in Fort Wayne, Indiana, where I also received my Associate's Degree from Vincennes University via an early college program. During my time with Vincennes' early college program, I served as a tutor and helped coordinate some of their events. 
+            I went to high school in Fort Wayne, Indiana, where I also received my Associate's Degree from Vincennes University via an early college program. During that time, I served as a tutor and helped coordinate events. 
             <br><br>
-            Beyond academics, you’ll usually find me hitting the badminton courts, lifting at the gym, or playing video games. 
+            Beyond academics, you’ll usually find me hitting the badminton courts, lifting at the gym, or relaxing.
             <br><br>
-            My current favorites: neat side projects, ai, linux, youtube
           </p>
         </div>
       </div>
     </section>
 
     <!-- Extended Biography Section -->
-    <section id="biography" class="biography-section fade-in">
+    <section id="biography" class="biography-section fade-in-on-scroll">
       <h2>Biography & Hobbies</h2>
-      <div class="bio-block fade-in-later">
+
+      <div class="bio-block">
         <h3>Early Interests</h3>
         <p>
-          My interest for Computer Science and AI mostly comes from popular media and my natural interest in computers growing up.
-          I remember researching computers a lot growing up, such as what each individual part did, and how to build computers. 
+          My interest in Computer Science and AI stems from popular media and a natural curiosity about how computers work. 
+          I remember reading up on PC components at a young age and eventually built my own system.
         </p>
         <br>
         <p>
-          My very first experience programming was using Scratch during my high school CS course. I ended up building a game in Scratch as my first project. Then, I ended up branching out and took Harvard's CS50 during my final year of high school
-          to prepare for my introductory CS courses at Purdue.
-        </p>
-      </div>
-      <div class="bio-block fade-in-later">
-        <h3>Learning & Research</h3>
-        <p>
-          At Purdue, I'm currently going through my fundamental CS courses (Currently CS240 and CS182). 
-          I enjoy putting the concepts that I learn from class into the class projects and my own projects. Whenever I have 
-          free time, I enjoy learning more about machine learning, algorithms, and also read Computer Science books.
-          <br><br>
-          Next year, I have the opportunity to be in the Data Mine Corporate Partners. The program provides an opportunity to build a project with a team and corporate partner, such as Minecraft, Google, Microsoft, and more!
-          <br><br>
-          This fall, I was also able to intern at Degreecat as a Software and Data Engineer. Degreecat is a startup that makes planning for college easier, and provides high school students with a platform to decide which
-          college is best for them. I was responsible for things such as creating Python scripts to extract data from 150+ colleges and processing that data. You can see more in my resume.
-          <br><br>
-          Currently, I'm most confident with Java, but I'm studying C, too.
-        </p>
-      </div>
-      <div class="bio-block fade-in-later">
-        <h3>Personal Life & Hobbies</h3>
-        <p>
-          I love staying active with badminton, 
-          bodybuilding, playing video games, and the occasional marathon binge-watch when I have time. 
-          I also like listening to music a lot, and I play bass guitar.
-        </p>
-        <br>
-        <p>
-          I started lifting weights and getting into fitness when I was 15 years old, but I started taking bodybuilding seriously at 17. I started with calisthenics in my room since I wanted to be healthier and more fit.
-          <br><br>
-          My favorite passtime currently is watching shows when I'm not studying. Some of my favorite shows are Steins;Gate, JoJo's Bizarre Adventure, Evangelion, Monster, and Berserk.
+          My first coding experience was with Scratch in high school. I made a basic game, then took Harvard's CS50 for more advanced prep. 
         </p>
       </div>
 
-      <!-- Optional Slideshow of Hobbies/Activities -->
+      <div class="bio-block">
+        <h3>Learning & Research</h3>
+        <p>
+          At Purdue, I'm currently studying my fundamental CS courses and textbooks.
+          I enjoy applying classroom concepts to personal projects. 
+          <br><br>
+          Next year, I'll join the Data Mine Corporate Partners, building real-world projects with a corporate sponsor (e.g. Google, Microsoft). 
+          <br><br>
+          I recently interned at Degreecat as a Software & Data Engineer, building Python scripts for extracting data from 150+ colleges. Read more in my resume!
+        </p>
+      </div>
+
+      <div class="bio-block">
+        <h3>Personal Life & Hobbies</h3>
+        <p>
+          I love badminton, bodybuilding, gaming, and watching tv shows. I also enjoy playing bass guitar.
+          <br><br>
+          I started lifting at 15, focusing on bodybuilding at 17. 
+          <br><br>
+        I like a lot of shows, some of my favorites are Steins;Gate, JoJo's Bizarre Adventure, Evangelion, Monster, and Berserk.
+        </p>
+      </div>
+
+      <!-- Slideshow -->
       <div class="slideshow-container">
         <div class="slide">
-          <img src="images/pizza.jpeg" alt="Hobby 1" />
+          <img src="images/pizza.jpeg" alt="Pizza in Chicago" />
           <div class="slide-caption">Pizza in Chicago</div>
         </div>
         <div class="slide">
-          <img src="images/vacation.jpeg" alt="Hobby 2" />
+          <img src="images/vacation.jpeg" alt="Vacation in Vietnam" />
           <div class="slide-caption">Me on vacation in Vietnam</div>
         </div>
         <div class="slide">
-          <img src="images/vacationhat.jpeg" alt="Hobby 3" />
+          <img src="images/vacationhat.jpeg" alt="Vacation in Vietnam again" />
           <div class="slide-caption">Me in Vietnam again</div>
         </div>
         <!-- Arrows -->
@@ -177,12 +265,12 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects-section fade-in">
+    <section id="projects" class="projects-section fade-in-on-scroll">
       <h2>Projects</h2>
       <div class="projects-grid">
         <!-- Example Project Card -->
         <div class="project-card" data-gallery="gadget1">
-          <img src="images/gui.png" alt="Gadget 1"/>
+          <img src="images/gui.png" alt="Screenshot of Java Project"/>
           <div class="image-caption">Social Media App - CS180 Final</div>
           <h3>Social Media App</h3>
           <p>A social media app built with Java for CS180's final team project.</p>
@@ -191,27 +279,27 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section fade-in">
+    <section id="contact" class="contact-section fade-in-on-scroll">
       <h2>Contact</h2>
       <p>Connect with me!</p>
       <p>
         <strong>Email:</strong>
         <a href="mailto:nguye875@purdue.edu">nguye875@purdue.edu</a><br/>
         <strong>GitHub:</strong>
-        <a href="https://github.com/jnguyen727">@jnguyen727</a><br/>
+        <a href="https://github.com/jnguyen727" target="_blank">@jnguyen727</a><br/>
         <strong>LinkedIn:</strong>
-        <a href="https://www.linkedin.com/in/jnguyen727">www.linkedin.com/in/jnguyen727</a>
+        <a href="https://www.linkedin.com/in/jnguyen727" target="_blank">linkedin.com/in/jnguyen727</a>
       </p>
     </section>
 
     <!-- Footer -->
     <footer class="site-footer">
-      <p>&copy; 2025 <span class="accent">Johnny Nguyen.</span></p>
+      <p>&copy; 2025 <span class="accent">Johnny Nguyen</span>.</p>
     </footer>
   </div> 
   <!-- end #main-wrapper -->
 
-  <!-- Lightbox Modal with Slide Animations -->
+  <!-- Lightbox Modal -->
   <div id="lightbox" class="lightbox">
     <span class="lb-close">&times;</span>
     <span class="lb-arrow lb-prev">&#10094;</span>
@@ -227,7 +315,7 @@
       <span class="resume-close">&times;</span>
       <h2 class="resume-heading">Johnny Nguyen — Interactive Resume</h2>
       
-      <!-- Navigation Tabs (Profile, Summary, Experience, Education, Projects, Skills) -->
+      <!-- Resume Tabs -->
       <div class="resume-tabs">
         <button class="resume-tablink active" data-target="profile-tab">Profile</button>
         <button class="resume-tablink" data-target="summary-tab">Summary</button>
@@ -237,19 +325,17 @@
         <button class="resume-tablink" data-target="skills-tab">Skills</button>
       </div>
 
-      <!-- TAB CONTENT: Profile -->
+      <!-- Profile Tab -->
       <div class="resume-tabcontent" id="profile-tab">
         <h3>Profiles</h3>
         <p>
-          <strong>
-            <a href="https://www.linkedin.com/in/jnguyen727/" target="_blank" data-text="Johnny Nguyen">LinkedIn</a>
-          </strong><br>
+          <strong><a href="https://www.linkedin.com/in/jnguyen727/" target="_blank">LinkedIn</a></strong><br>
           <strong>Phone:</strong> (260) 466-1147<br>
           <strong>Email:</strong> <a href="mailto:nguye875@purdue.edu">nguye875@purdue.edu</a>
         </p>
       </div>
 
-      <!-- TAB CONTENT: Summary -->
+      <!-- Summary Tab -->
       <div class="resume-tabcontent" id="summary-tab">
         <h3>Summary</h3>
         <p>
@@ -257,34 +343,34 @@
         </p>
       </div>
 
-      <!-- TAB CONTENT: Experience -->
+      <!-- Experience Tab -->
       <div class="resume-tabcontent" id="experience-tab">
         <h3>Experience</h3>
 
         <h4>Degreecat — Software &amp; Data Engineer Intern<br><em>Sep 2024 – Present • West Lafayette, IN</em></h4>
         <ul>
           <li>Developed Dockerized Python scripts to gather data from 150+ colleges, improving data accuracy by 40%.</li>
-          <li>Optimized microservice architecture and CI/CD workflows (GitHub Actions), increasing pipeline performance by 60% with 99.95% uptime.</li>
-          <li>Collaborated with data scientists to transform raw data into predictive models for college cost-effectiveness, refining models via iterative feedback loops.</li>
-          <li>Participated in daily stand-ups, code reviews, and knowledge-sharing sessions, improving team synergy and project visibility.</li>
+          <li>Optimized microservice architecture and CI/CD workflows (GitHub Actions), boosting pipeline performance by 60% with 99.95% uptime.</li>
+          <li>Collaborated with data scientists to transform raw data into predictive models for college cost-effectiveness.</li>
+          <li>Participated in daily stand-ups, code reviews, and knowledge-sharing sessions, boosting team synergy.</li>
         </ul>
 
         <h4>Vincennes University — Head Math Tutor<br><em>Mar 2024 – May 2024 • Fort Wayne, IN</em></h4>
         <ul>
-          <li>Supervised 5 tutors and mentored 50+ students, elevating average math scores by 30% through individualized coaching and structured study sessions.</li>
-          <li>Organized 10+ university and career events, fostering community engagement and providing students with resources to explore STEM fields.</li>
-          <li>Increased Python (AI) certification completion rate by 20% by hosting hands-on workshops and offering one-on-one guidance.</li>
+          <li>Supervised 5 tutors and mentored 50+ students, elevating average math scores by 30% through individualized coaching.</li>
+          <li>Organized 10+ events, fostering community engagement and providing STEM exploration resources.</li>
+          <li>Increased Python (AI) certification rates by 20% with hands-on workshops and guidance.</li>
         </ul>
 
         <h4>Mike's Carwash — Wash Attendant<br><em>Oct 2022 – Aug 2023 • Fort Wayne, IN</em></h4>
         <ul>
-          <li>Led a 5-person team to service 100+ vehicles/day, consistently exceeding throughput targets by 15% with an emphasis on efficiency and safety.</li>
-          <li>Maintained a 95% customer satisfaction rating, resolving inquiries professionally and training new staff on workflow best practices.</li>
-          <li>Recognized for strong communication and leadership, bridging staff and management for process improvement initiatives.</li>
+          <li>Led a 5-person team servicing 100+ vehicles/day, exceeding throughput targets by 15% with emphasis on efficiency.</li>
+          <li>Maintained a 95% customer satisfaction rating.</li>
+          <li>Recognized for strong communication and leadership, bridging staff and management for improvements.</li>
         </ul>
       </div>
 
-      <!-- TAB CONTENT: Education -->
+      <!-- Education Tab -->
       <div class="resume-tabcontent" id="education-tab">
         <h3>Education</h3>
         <p>
@@ -294,19 +380,19 @@
         </p>
       </div>
 
-      <!-- TAB CONTENT: Projects -->
+      <!-- Projects Tab -->
       <div class="resume-tabcontent" id="projects-tab">
         <h3>Projects</h3>
         <h4>EngageNet Java — Lead Developer<br><em>Sep 2024 – Dec 2024</em></h4>
         <ul>
-          <li>Architected and implemented both server- and client-side applications for a social media platform featuring post, comment, like, and user-authentication functionality.</li>
-          <li>Planned and led a team of three from design to deployment, integrating REST APIs for data exchange and implementing user permission controls.</li>
-          <li>Enforced code reviews via GitHub, ensuring consistent coding standards and 80%+ test coverage with JUnit, while adhering to Agile milestones.</li>
-          <li>Improved system scalability by refactoring the data handling layer, reducing average response time by 25%.</li>
+          <li>Architected a social media platform with post, comment, like, and user-authentication features.</li>
+          <li>Integrated REST APIs for data exchange and enforced user permission controls.</li>
+          <li>Maintained 80%+ test coverage with JUnit and adhered to Agile milestones.</li>
+          <li>Refactored data handling layer, reducing average response time by 25%.</li>
         </ul>
       </div>
 
-      <!-- TAB CONTENT: Skills -->
+      <!-- Skills Tab -->
       <div class="resume-tabcontent" id="skills-tab">
         <h3>Skills</h3>
         <p><strong>Languages/Tools:</strong> Python, Java, C, JavaScript, SQL, Docker, Git/GitHub, Linux, Bash</p>
@@ -318,7 +404,7 @@
 
   <!-- JavaScript -->
   <script>
-    // PRELOADER
+    // PRELOADER: fade out after 2 seconds
     window.addEventListener("load", () => {
       setTimeout(() => {
         const preloader = document.getElementById("preloader");
@@ -326,7 +412,7 @@
         preloader.style.opacity = "0";
         preloader.style.visibility = "hidden";
         mainWrapper.classList.remove("hidden");
-      }, 3000);
+      }, 2000);
     });
 
     // RANDOM QUOTES
@@ -339,7 +425,7 @@
       "No one knows which is correct. Perhaps they're all correct.",
       "When you have eliminated all which is impossible, then whatever remains, however improbable, must be the truth.",
       "'Jam a man of Fortune and J must seek my Fortune, Henry Avery 1994' - xQc",
-      "You need to have a little bit of rain to have a little bit of rainbow - Felix 'xQc' Lengyel"
+      "You need a little bit of rain to have a little bit of rainbow - Felix 'xQc' Lengyel"
     ];
     const quoteBox = document.getElementById("quote-box");
     const randomQuoteBtn = document.getElementById("random-quote-btn");
@@ -349,7 +435,7 @@
       quoteBox.textContent = quotes[randomIndex];
     });
 
-    // LIGHTBOX GALLERY LOGIC WITH SLIDE ANIMATIONS
+    // LIGHTBOX GALLERY LOGIC
     const galleries = {
       gadget1: [
         "images/picture.png",
@@ -412,46 +498,22 @@
     lbClose.addEventListener("click", () => {
       lightbox.classList.remove("show");
     });
-
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) {
         lightbox.classList.remove("show");
       }
     });
 
-    // Sticky Header on Scroll
-    document.addEventListener("scroll", function() {
-      const header = document.getElementById("top-header");
-      if (window.scrollY > 10) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    });
-
-    // Fade-in-later triggers for biography sub-blocks
-    document.addEventListener('scroll', () => {
-      const blocks = document.querySelectorAll('.bio-block');
-      blocks.forEach(block => {
-        const rect = block.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          block.classList.add('fade-in-later');
-        }
-      });
-    });
-
-    // SLIDESHOW for Biography Hobbies
+    // SLIDESHOW (manual only, no auto-advance)
     let slideIndex = 1;
     showSlides(slideIndex);
 
     function changeSlide(n) {
       showSlides(slideIndex += n);
     }
-
     function setCurrentSlide(n) {
       showSlides(slideIndex = n);
     }
-
     function showSlides(n) {
       const slides = document.querySelectorAll(".slide");
       const dots = document.querySelectorAll(".dot");
@@ -462,9 +524,6 @@
       slides[slideIndex - 1].style.display = "block";
       dots[slideIndex - 1].className += " active";
     }
-    setInterval(() => {
-      changeSlide(1);
-    }, 6000);
 
     // RESUME MODAL Logic
     const resumeModal = document.getElementById("resume-modal");
@@ -478,13 +537,11 @@
       resumeModal.style.display = "flex";
       document.body.style.overflow = "hidden"; // disable scrolling behind modal
     });
-
     // Close modal
     resumeClose.addEventListener("click", () => {
       resumeModal.style.display = "none";
       document.body.style.overflow = "auto";
     });
-
     // Close modal if clicking outside content
     window.addEventListener("click", (e) => {
       if (e.target === resumeModal) {
@@ -492,7 +549,6 @@
         document.body.style.overflow = "auto";
       }
     });
-
     // Tab switching
     tabLinks.forEach(tab => {
       tab.addEventListener("click", (e) => {
@@ -503,9 +559,37 @@
         document.getElementById(targetId).style.display = "block";
       });
     });
-
     // Default active tab
     document.getElementById("profile-tab").style.display = "block";
+
+    // Intersection Observer for fade-in sections
+    const faders = document.querySelectorAll('.fade-in-on-scroll');
+    const observerOptions = {
+      threshold: 0.05  // triggers quickly so user sees content reliably
+    };
+
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    faders.forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    // Sticky Header Toggle
+    window.addEventListener("scroll", function() {
+      const header = document.getElementById("top-header");
+      if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
   </script>
 </body>
 </html>

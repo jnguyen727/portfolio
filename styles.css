@@ -276,8 +276,7 @@ body {
   background-color: var(--secondary-bg);
   padding: 1rem;
   border-radius: 4px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 0;               /* hidden initially */
+  transition: transform 0.3s ease, opacity 0.3s ease;              /* hidden initially */
   transform: translateY(15px);
 }
 
